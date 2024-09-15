@@ -142,7 +142,7 @@ class AnonmaskCreator(object):
         im = self._selectColour(colour)
         contours = np.array(cv2.findContours(
             im,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[-2],
-            dtype=np.object)
+            dtype=object)
         area = np.array([(np.max(contour[:,0])-np.min(contour[:,0]))
                 *(np.max(contour[:,1])-np.min(contour[:,1]))
             for e in contours for contour in [e[:,0]]])/self.dpi**2
