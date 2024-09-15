@@ -96,7 +96,7 @@ class AnonmaskCreator(object):
         try:
                 dpi = [float(n) for n in Image.open(BytesIO(imbin)).info["dpi"]]
                 self.dpi = np.average(dpi)
-                if self.dpi == 72: raise ValueError("assuming wrong dpi")
+                if self.dpi >= 72 and self.dpi <= 73: raise ValueError("assuming wrong dpi")
         except (KeyError, ValueError):
             self.dpi = round(max(self.im.shape)/(max(CALIBRATIONPAGE_SIZE)/72),-2)
             sys.stderr.write("Warning: Cannot determine dpi of input. "
